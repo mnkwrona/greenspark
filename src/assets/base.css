@@ -4,7 +4,19 @@
 
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
-  --vt-c-white: #ffffff;
+  --gs-c-white: #ffffff;
+
+  --gs-c-gray-light: #f9f9f9;
+  --gs-c-gray: #b0b0b0;
+
+  --gs-c-green: #3b755f;
+  --gs-c-green-light: #afc6bd;
+  --gs-c-green-light-opacity: rgba(175, 198, 189, 0.5);
+
+  --gs-c-cream-light: #f2ebdb;
+
+  /* --gs-w-thin: 0.59px; */
+  /* --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
 
@@ -22,12 +34,22 @@
   --vt-c-text-light-1: var(--vt-c-indigo);
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64); */
 }
 
-/* semantic color variables for this project */
+/* semantic color and width variables for this project */
 :root {
-  --color-background: var(--vt-c-white);
+  --color-toggle-button: var(--gs-c-green-light);
+  --color-toggle-circle: var(--gs-c-cream-light);
+  --color-toggle-fill: var(--gs-c-gray-light);
+  --color-toggle-hover-ring: var(--gs-c-green-light-opacity);
+  --color-toggle-button-selected: var(--gs-c-gray);
+  --color-toggle-fill-selected: var(--gs-c-green);
+  --color-toggle-circle-selected: var(--gs-c-green);
+
+  /* --border-toggle-line: var(--gs-w-thin); */
+
+  /* --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
 
@@ -37,21 +59,7 @@
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
 
-  --section-gap: 160px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
+  --section-gap: 160px; */
 }
 
 *,
@@ -83,7 +91,7 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

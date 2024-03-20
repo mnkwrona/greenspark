@@ -11,7 +11,7 @@ const { widgets } = storeToRefs(widgetStore)
 </script>
 
 <template>
-  <div class="gs-product-widgets-manager flex flex-col sm:flex-row">
+  <div class="gs-product-widgets-manager gap-4 flex flex-col sm:flex-row">
     <GSProductWidget v-for="(widget, index) in widgets" :key="index" :widget="widget" />
   </div>
 </template>
