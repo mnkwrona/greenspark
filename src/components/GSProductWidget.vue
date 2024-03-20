@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type Widget from '@/types/Widget'
 
+import GSCheckbox from './GSCheckbox.vue'
 import GSToggle from './GSToggle.vue'
 
 defineProps<{
@@ -10,6 +11,7 @@ defineProps<{
 
 <template>
   <div class="gs-product-widget">
-    <GSToggle />
+    <!-- <GSToggle /> -->
+    <GSCheckbox />
   </div>
 </template>

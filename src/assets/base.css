@@ -6,6 +6,8 @@
 :root {
   --gs-c-white: #ffffff;
 
+  --gs-c-black: #212121;
+
   --gs-c-gray-light: #f9f9f9;
   --gs-c-gray: #b0b0b0;
 
@@ -46,6 +48,9 @@
   --color-toggle-button-selected: var(--gs-c-gray);
   --color-toggle-fill-selected: var(--gs-c-green);
   --color-toggle-circle-selected: var(--gs-c-green);
+
+  --color-checkbox: var(--gs-c-black);
+  --color-toggle-background-hover: var(--gs-c-green-light);
 
   /* --border-toggle-line: var(--gs-w-thin); */
 
