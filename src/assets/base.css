@@ -8,14 +8,16 @@
 
   --gs-c-black: #212121;
 
-  --gs-c-gray-light: #f9f9f9;
+  --gs-c-blue: #2e3a8c;
+
   --gs-c-gray: #b0b0b0;
+  --gs-c-gray-light: #f9f9f9;
 
   --gs-c-green: #3b755f;
   --gs-c-green-light: #afc6bd;
   --gs-c-green-light-opacity: rgba(175, 198, 189, 0.5);
 
-  --gs-c-cream-light: #f2ebdb;
+  --gs-c-beige: #f2ebdb;
 
   /* --gs-w-thin: 0.59px; */
   /* --vt-c-white: #ffffff;
@@ -39,19 +41,25 @@
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64); */
 }
 
-/* semantic color and width variables for this project */
+/* semantic color variables for this project */
 :root {
-  --color-toggle-button: var(--gs-c-green-light);
-  --color-toggle-circle: var(--gs-c-cream-light);
-  --color-toggle-fill: var(--gs-c-gray-light);
-  --color-toggle-hover-ring: var(--gs-c-green-light-opacity);
-  --color-toggle-button-selected: var(--gs-c-gray);
-  --color-toggle-fill-selected: var(--gs-c-green);
-  --color-toggle-circle-selected: var(--gs-c-green);
-
   --color-checkbox: var(--gs-c-black);
-  --color-toggle-background-hover: var(--gs-c-green-light);
 
+  --color-toggle-background-hover: var(--gs-c-green-light);
+  --color-toggle-button: var(--gs-c-green-light);
+  --color-toggle-button-selected: var(--gs-c-gray);
+  --color-toggle-circle: var(--gs-c-beige);
+  --color-toggle-circle-selected: var(--gs-c-green);
+  --color-toggle-fill: var(--gs-c-gray-light);
+  --color-toggle-fill-selected: var(--gs-c-green);
+  --color-toggle-hover-ring: var(--gs-c-green-light-opacity);
+
+  --color-select-beige: var(--gs-c-beige);
+  --color-select-black: var(--gs-c-black);
+  --color-select-blue: var(--gs-c-blue);
+  --color-select-green: var(--gs-c-green);
+  --color-select-white: var(--gs-c-white);
+  --color-select-selected: var(--gs-c-gray);
   /* --border-toggle-line: var(--gs-w-thin); */
 
   /* --color-background: var(--vt-c-white);
