@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useWidgetStore = defineStore('widget', () => {
+  // @TODO check for other selectedColors: white and beige
   const widgets = ref([
     {
       id: 1,

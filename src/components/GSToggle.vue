@@ -1,36 +1,54 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
 
-const selected = ref(false)
+const emit = defineEmits(['update:modelValue'])
+const props = defineProps<{
+  modelValue: boolean
+}>()
 
-const emit = defineEmits(['toggled'])
+const toggled = computed({
+  get() {
+    return props.modelValue
+  },
+  set(value) {
+    emit('update:modelValue', value)
+  }
+})
 
-const handleClick = () => {
-  selected.value = !selected.value
-  emit('toggled', selected.value)
-}
+const buttonClasses = computed(() => {
+  return {
+    'bg-[--color-toggle-fill]': !toggled.value,
+    'bg-[--color-toggle-fill-selected] border-[--color-toggle-button-selected]': toggled.value
+  }
+})
+
+const outerRingClasses = computed(() => {
+  return { 'translate-x-[25%] left-auto': toggled.value }
+})
+
+const innerRingClasses = computed(() => {
+  return { 'border-[--color-toggle-circle-selected]': toggled.value }
+})
+// @TODO type emits:
+// const emit = defineEmits<{
+//   (e: "@create", entry: Entry): void;
+// }>();
 </script>
 
 <template>
-  <div class="gs-toggle">
+  <div class="gs-toggle flex items-center">
     <button
-      class="bg-[--color-toggle-fill] border-solid border-[1px] border-[--color-toggle-button] rounded-[11.5px] relative hover:shadow-inner h-[23px] w-[46px] transition-all duration-500"
-      :class="{
-        'bg-[--color-toggle-fill-selected]': selected,
-        'border-[--color-toggle-button-selected]': selected
-      }"
-      @click="handleClick"
+      class="border-solid border-[1px] border-[--color-toggle-button] rounded-[11.5px] relative hover:shadow-inner h-[20px] w-[40px] transition-all duration-500 hover:pointer"
+      :class="buttonClasses"
+      @click="toggled = !toggled"
     >
       <div
-        class="ring-outer h-[38px] w-[38px] rounded-[50%] absolute left-[-8.5px] top-[-8px] transition-all duration-500 transform"
-        :class="{
-          'translate-x-[23px]': selected,
-          'left-auto': selected
-        }"
+        class="ring-outer h-[38px] w-[38px] rounded-[50%] absolute left-[-10px] top-[-10px] transition-all duration-500 transform"
+        :class="outerRingClasses"
       >
         <div
-          class="bg-[--color-toggle-fill] border-solid border-[1px] border-[--color-toggle-circle] absolute left-[7.5px] top-[7px] h-[23px] w-[23px] z-1 content-center rounded-[50%] drop-shadow-sm"
-          :class="{ 'border-[--color-toggle-circle-selected]': selected }"
+          class="bg-[--color-toggle-fill] border-solid border-[1px] border-[--color-toggle-circle] absolute left-[9px] top-[9px] h-[20px] w-[20px] z-1 content-center rounded-[50%] drop-shadow-sm"
+          :class="innerRingClasses"
         ></div>
       </div>
     </button>
