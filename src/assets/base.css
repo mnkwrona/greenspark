@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* color palette from <https://github.com/vuejs/theme> */
 :root {
+  /* color palette */
   --gs-c-white: #ffffff;
 
   --gs-c-black: #212121;
@@ -18,31 +18,10 @@
   --gs-c-green-light-opacity: rgba(175, 198, 189, 0.5);
 
   --gs-c-beige: #f2ebdb;
-
-  /* --gs-w-thin: 0.59px; */
-  /* --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
-
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
-
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64); */
 }
 
-/* semantic color variables for this project */
 :root {
+  /* semantic color variables for this project */
   --color-checkbox: var(--gs-c-black);
 
   --color-toggle-background-hover: var(--gs-c-green-light);
@@ -71,22 +50,10 @@
   --color-header-bg-green: var(--gs-c-green);
   --color-header-bg-white: var(--gs-c-white);
 
-  --color-header-font: var(--gs-c-gray-light);
+  --color-header-font: var(--gs-c-beige);
   --color-header-font-dark: var(--gs-c-green);
 
   --color-prop-label: var(--gs-c-green);
-  /* --border-toggle-line: var(--gs-w-thin); */
-  /* --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px; */
 }
 
 *,

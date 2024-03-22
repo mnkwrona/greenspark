@@ -1,11 +1,10 @@
 <script setup lang="ts">
-// defineProps<{
-//   msg: string
-// }>()
-import { useWidgetStore } from '@/stores/widget'
 import { storeToRefs } from 'pinia'
-import GSProductWidget from './GSProductWidget.vue'
-import GSTooltip from './GSTooltip.vue'
+import { defineAsyncComponent } from 'vue'
+
+import { useWidgetStore } from '@/stores/widget'
+
+const GSProductWidget = defineAsyncComponent(() => import('./GSProductWidget.vue'))
 
 const widgetStore = useWidgetStore()
 const { widgets } = storeToRefs(widgetStore)

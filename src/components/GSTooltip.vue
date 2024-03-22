@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-import GSIconInfo from './icons/GSIconInfo.vue'
+import { defineAsyncComponent, ref } from 'vue'
+
+const GSIconInfo = defineAsyncComponent(() => import('./icons/GSIconInfo.vue'))
 
 const show = ref(false)
 </script>

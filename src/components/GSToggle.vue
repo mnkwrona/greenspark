@@ -38,7 +38,7 @@ const innerRingClasses = computed(() => {
 <template>
   <div class="gs-toggle flex items-center">
     <button
-      class="border-solid border-[1px] border-[--color-toggle-button] rounded-[11.5px] relative hover:shadow-inner h-[20px] w-[40px] transition-all duration-500 hover:pointer"
+      class="border-solid border-[1px] border-[--color-toggle-button] rounded-[11.5px] relative hover:shadow-inner hover:cursor-auto h-[20px] w-[40px] transition-all duration-500"
       :class="buttonClasses"
       @click="toggled = !toggled"
     >

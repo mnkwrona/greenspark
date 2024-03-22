@@ -32,8 +32,8 @@ const selected = computed({
       leave-active-class="transition duration-200"
       class="flex justify-center align-center"
     >
-      <img v-if="selected" src="./icons/IconCheckboxChecked.svg" />
-      <img v-else src="./icons/IconCheckboxUnchecked.svg" />
+      <img v-if="selected" src="../assets/IconCheckboxChecked.svg" />
+      <img v-else src="../assets/IconCheckboxUnchecked.svg" />
     </transition>
   </div>
 </template>

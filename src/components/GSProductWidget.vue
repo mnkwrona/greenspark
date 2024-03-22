@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
+
 import type Widget from '@/types/Widget'
 import type Color from '@/types/Color'
 
-import GSCheckbox from './GSCheckbox.vue'
-import GSToggle from './GSToggle.vue'
-import GSColorSelect from './GSColorSelect.vue'
-import GSLogo from './GSLogo.vue'
-import GSTooltip from './GSTooltip.vue'
-import GSWidgetProp from './GSWidgetProp.vue'
+const GSCheckbox = defineAsyncComponent(() => import('./GSCheckbox.vue'))
+const GSToggle = defineAsyncComponent(() => import('./GSToggle.vue'))
+const GSColorSelect = defineAsyncComponent(() => import('./GSColorSelect.vue'))
+const GSLogo = defineAsyncComponent(() => import('./GSLogo.vue'))
+const GSTooltip = defineAsyncComponent(() => import('./GSTooltip.vue'))
+const GSWidgetProp = defineAsyncComponent(() => import('./GSWidgetProp.vue'))
+
+const colors: Color[] = ['blue', 'green', 'beige', 'white', 'black']
 
 const props = defineProps<{
   widget: Widget
@@ -28,10 +31,8 @@ const header = computed(() => {
   return `${props.widget.amount}${props.widget.type === 'carbon' ? 'kgs of' : ''} ${props.widget.type}`
 })
 
-const colors: Color[] = ['blue', 'green', 'beige', 'white', 'black']
-
-const handleChange = (e, p) => {
-  emit('updated', { property: p, value: e })
+const handleChange = (eventVal: string, propName: string) => {
+  emit('updated', { property: propName, value: eventVal })
 }
 
 const headerClasses = computed((): string => {

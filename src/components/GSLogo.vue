@@ -7,12 +7,7 @@ const props = defineProps<{
 }>()
 
 const fill = computed(() => {
-  const variants = {
-    green: 'var(--gs-c-green)',
-    beige: 'var(--gs-c-beige)'
-  }
-
-  return variants[props.color]
+  return `var(--gs-c-${props.color})`
 })
 </script>
 
