@@ -17,7 +17,6 @@ const props = defineProps<{
 const emit = defineEmits(['updated'])
 
 const logoColor = computed(() => {
-  // @TODO
   return ['beige', 'white'].includes(props.widget.selectedColor) ? 'green' : 'beige'
 })
 
@@ -28,12 +27,6 @@ const subheader = computed(() => {
 const header = computed(() => {
   return `${props.widget.amount}${props.widget.type === 'carbon' ? 'kgs of' : ''} ${props.widget.type}`
 })
-
-// const headerStyle = (): object => {
-//   return {
-//     'background-color': `var(--color-header-bg-${props.widget.selectedColor})`
-//   }
-// }
 
 const colors: Color[] = ['blue', 'green', 'beige', 'white', 'black']
 

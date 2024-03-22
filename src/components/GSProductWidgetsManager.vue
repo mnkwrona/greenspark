@@ -15,6 +15,15 @@ const handleUpdate = (event, widget): void => {
     return JSON.stringify(w) === JSON.stringify(widget)
   })
 
+  // disable other widgets
+  if (event.property === 'active') {
+    widgets.value.forEach((widget) => {
+      if (JSON.stringify(modifiedWidget) !== JSON.stringify(widget)) {
+        widget.active = false
+      }
+    })
+  }
+
   modifiedWidget[event.property] = event.value
 }
 </script>
