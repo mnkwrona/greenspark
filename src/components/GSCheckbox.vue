@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-// @TODO type emit
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: boolean): void
+}>()
 
 const props = defineProps<{
   modelValue: boolean

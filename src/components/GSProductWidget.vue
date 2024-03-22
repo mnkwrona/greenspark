@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent } from 'vue'
 
-import type Widget from '@/types/Widget'
 import type Color from '@/types/Color'
+import type UpdateEvent from '@/types/UpdateEvent'
+import type Widget from '@/types/Widget'
 
 const GSCheckbox = defineAsyncComponent(() => import('./GSCheckbox.vue'))
 const GSToggle = defineAsyncComponent(() => import('./GSToggle.vue'))
@@ -17,7 +18,9 @@ const props = defineProps<{
   widget: Widget
 }>()
 
-const emit = defineEmits(['updated'])
+const emit = defineEmits<{
+  (e: 'updated', propertyObj: UpdateEvent): void
+}>()
 
 const logoColor = computed(() => {
   return ['beige', 'white'].includes(props.widget.selectedColor) ? 'green' : 'beige'
@@ -31,11 +34,11 @@ const header = computed(() => {
   return `${props.widget.amount}${props.widget.type === 'carbon' ? 'kgs of' : ''} ${props.widget.type}`
 })
 
-const handleChange = (eventVal: string, propName: string) => {
+const handleChange = (eventVal: boolean | string, propName: string) => {
   emit('updated', { property: propName, value: eventVal })
 }
 
-const headerClasses = computed((): string => {
+const headerClasses = computed(() => {
   const variants = {
     white: 'bg-[--color-header-bg-white] text-[--color-header-font-dark]',
     black: 'bg-[--color-header-bg-black] text-[--color-header-font]',
@@ -44,7 +47,7 @@ const headerClasses = computed((): string => {
     beige: 'bg-[--color-header-bg-beige] text-[--color-header-font-dark]'
   }
 
-  return variants[props.widget.selectedColor]
+  return variants[props.widget.selectedColor as keyof typeof variants]
 })
 </script>
 

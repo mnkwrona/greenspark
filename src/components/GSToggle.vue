@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits<{
+  (e: 'update:modelValue', val: boolean): void
+}>()
+
 const props = defineProps<{
   modelValue: boolean
 }>()
@@ -29,10 +32,6 @@ const outerRingClasses = computed(() => {
 const innerRingClasses = computed(() => {
   return { 'border-[--color-toggle-circle-selected]': toggled.value }
 })
-// @TODO type emits:
-// const emit = defineEmits<{
-//   (e: "@create", entry: Entry): void;
-// }>();
 </script>
 
 <template>

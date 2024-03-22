@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="flex flex-row justify-between">
     <p class="text-[--color-prop-label]">

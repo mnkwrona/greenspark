@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { defineAsyncComponent } from 'vue'
-
 import { useWidgetStore } from '@/stores/widget'
+
+import type Widget from '@/types/Widget'
+import type UpdateEvent from '@/types/UpdateEvent'
 
 const GSProductWidget = defineAsyncComponent(() => import('./GSProductWidget.vue'))
 
 const widgetStore = useWidgetStore()
 const { widgets } = storeToRefs(widgetStore)
 
-const handleUpdate = (event, widget): void => {
+const handleUpdate = (event: UpdateEvent, widget: Widget): void => {
   const modifiedWidget = widgets.value.find((w) => {
     return JSON.stringify(w) === JSON.stringify(widget)
   })

@@ -6,7 +6,7 @@ const props = defineProps<{
   color: Color
 }>()
 
-const fill = computed(() => {
+const fill = computed((): string => {
   return `var(--gs-c-${props.color})`
 })
 </script>

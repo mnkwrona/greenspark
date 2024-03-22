@@ -7,8 +7,9 @@ const props = defineProps<{
   options: Color[]
 }>()
 
-// @TODO type emit
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits<{
+  (e: 'update:modelValue', color: Color): void
+}>()
 
 const selected = computed({
   get() {
@@ -30,7 +31,7 @@ const classes = (option: Color): string => {
     beige: `bg-[--color-select-beige] ${isSelected ? 'border-[--color-select-selected]' : 'border-[--gs-c-beige]'}`
   }
 
-  return variants[option]
+  return variants[option as keyof typeof variants]
 }
 </script>
 

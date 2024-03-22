@@ -1,9 +1,10 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
+import type Widget from '@/types/Widget'
+
 export const useWidgetStore = defineStore('widget', () => {
-  // @TODO check for other selectedColors: white and beige
-  const widgets = ref([
+  const widgets = ref<Widget[]>([
     {
       id: 1,
       type: 'plastic bottles',
