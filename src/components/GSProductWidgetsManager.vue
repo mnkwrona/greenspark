@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, onBeforeMount } from 'vue'
 import { useWidgetStore } from '@/stores/widget'
 
 import type Widget from '@/types/Widget'
@@ -9,6 +9,7 @@ import type UpdateEvent from '@/types/UpdateEvent'
 const GSProductWidget = defineAsyncComponent(() => import('./GSProductWidget.vue'))
 
 const widgetStore = useWidgetStore()
+const { fetchWidgets } = widgetStore
 const { widgets } = storeToRefs(widgetStore)
 
 const handleUpdate = (event: UpdateEvent, widget: Widget): void => {
@@ -27,6 +28,10 @@ const handleUpdate = (event: UpdateEvent, widget: Widget): void => {
 
   modifiedWidget[event.property] = event.value
 }
+
+onBeforeMount(() => {
+  fetchWidgets()
+})
 </script>
 
 <template>
