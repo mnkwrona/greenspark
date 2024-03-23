@@ -1,11 +1,20 @@
 <script lang="ts" setup>
+/**
+ * Toggle component.
+ */
 import { computed } from 'vue'
 
 const emit = defineEmits<{
+  /**
+   * Value emitted on click
+   */
   (e: 'update:modelValue', val: boolean): void
 }>()
 
 const props = defineProps<{
+  /**
+   * Value property
+   */
   modelValue: boolean
 }>()
 

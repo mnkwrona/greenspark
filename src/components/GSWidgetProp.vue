@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+/**
+ * Widget Property component
+ */
+</script>
+
 <template>
   <div class="flex flex-row justify-between">
     <p class="text-[--color-prop-label]">

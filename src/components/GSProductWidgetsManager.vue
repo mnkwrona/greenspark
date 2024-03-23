@@ -1,4 +1,7 @@
 <script setup lang="ts">
+/**
+ * Product Widgets Manager component
+ */
 import { storeToRefs } from 'pinia'
 import { defineAsyncComponent, onBeforeMount } from 'vue'
 import { useWidgetStore } from '@/stores/widget'
@@ -12,6 +15,12 @@ const widgetStore = useWidgetStore()
 const { fetchWidgets } = widgetStore
 const { widgets } = storeToRefs(widgetStore)
 
+/**
+ * Handles widget parameter changes
+ * and updates them in the store.
+ * @param {Object} event Parameter key and new value
+ * @param {object} widget Updated widget
+ */
 const handleUpdate = (event: UpdateEvent, widget: Widget): void => {
   const modifiedWidget = widgets.value.find((w) => {
     return JSON.stringify(w) === JSON.stringify(widget)

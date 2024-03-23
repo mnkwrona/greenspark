@@ -1,11 +1,20 @@
 <script lang="ts" setup>
+/**
+ * Checkbox control component
+ */
 import { computed } from 'vue'
 
 const emit = defineEmits<{
+  /**
+   * Value emitted on click
+   */
   (e: 'update:modelValue', value: boolean): void
 }>()
 
 const props = defineProps<{
+  /**
+   * Value property
+   */
   modelValue: boolean
 }>()
 

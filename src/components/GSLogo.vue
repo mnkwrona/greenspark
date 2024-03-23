@@ -1,8 +1,14 @@
 <script lang="ts" setup>
+/**
+ * Greenspark logo component
+ */
 import { computed } from 'vue'
 import type Color from '@/types/Color'
 
 const props = defineProps<{
+  /**
+   * Icon's color
+   */
   color: Color
 }>()
 

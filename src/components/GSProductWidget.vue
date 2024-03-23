@@ -1,4 +1,7 @@
 <script setup lang="ts">
+/**
+ * Product widget component
+ */
 import { computed, defineAsyncComponent } from 'vue'
 
 import type Color from '@/types/Color'
@@ -6,39 +9,64 @@ import type UpdateEvent from '@/types/UpdateEvent'
 import type Widget from '@/types/Widget'
 
 const GSCheckbox = defineAsyncComponent(() => import('./GSCheckbox.vue'))
-const GSToggle = defineAsyncComponent(() => import('./GSToggle.vue'))
 const GSColorSelect = defineAsyncComponent(() => import('./GSColorSelect.vue'))
 const GSLogo = defineAsyncComponent(() => import('./GSLogo.vue'))
 const GSSkeleton = defineAsyncComponent(()=> import('./GSSkeleton.vue'))
+const GSToggle = defineAsyncComponent(() => import('./GSToggle.vue'))
 const GSTooltip = defineAsyncComponent(() => import('./GSTooltip.vue'))
 const GSWidgetProp = defineAsyncComponent(() => import('./GSWidgetProp.vue'))
 
 const colors: Color[] = ['blue', 'green', 'beige', 'white', 'black']
 
 const props = defineProps<{
+ /**
+  * Widget details
+  */
   widget: Widget | null
 }>()
 
 const emit = defineEmits<{
+ /**
+  * Update event
+  */
   (e: 'updated', propertyObj: UpdateEvent): void
 }>()
 
+/**
+ * Logo color computed from
+ * selected color of widget
+ */
 const logoColor = computed(() => {
   return ['beige', 'white'].includes(props.widget.selectedColor) ? 'green' : 'beige'
 })
 
+/**
+ * Subheader copy
+ */
 const subheader = computed(() => {
   return `this product ${props.widget.action}`
 })
 
+/**
+ * Header copy
+ */
 const header = computed(() => {
   return `${props.widget.amount}${props.widget.type === 'carbon' ? 'kgs of' : ''} ${props.widget.type}`
 })
 
+/**
+ * Handles value changes from controls.
+ * @param {Boolean | String} eventVal Changed property's value
+ * @param { String} propName Changed property's name
+ */
 const handleChange = (eventVal: boolean | string, propName: string) => {
   emit('updated', { property: propName, value: eventVal })
 }
 
+/**
+ * Header style classes computed
+ * from selected widget type.
+ */
 const headerClasses = computed(() => {
   const variants = {
     white: 'bg-[--color-header-bg-white] text-[--color-header-font-dark]',

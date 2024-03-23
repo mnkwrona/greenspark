@@ -1,8 +1,14 @@
 <script lang="ts" setup>
+/**
+ * Tooltip with trigger slot component
+ */
 import { defineAsyncComponent, ref } from 'vue'
 
 const GSIconInfo = defineAsyncComponent(() => import('./icons/GSIconInfo.vue'))
 
+/**
+ * Show tooltip.
+ */
 const show = ref(false)
 </script>
 

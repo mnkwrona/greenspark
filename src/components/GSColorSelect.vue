@@ -1,13 +1,25 @@
 <script lang="ts" setup>
+/**
+ * Color selector control component
+ */
 import type Color from '@/types/Color'
 import { computed } from 'vue'
 
 const props = defineProps<{
+  /**
+   * Value property
+   */
   modelValue: Color
+  /**
+   * Color options
+   */
   options: Color[]
 }>()
 
 const emit = defineEmits<{
+  /**
+   * Color value emitted on selection
+   */
   (e: 'update:modelValue', color: Color): void
 }>()
 
@@ -19,6 +31,12 @@ const selected = computed({
     emit('update:modelValue', value)
   }
 })
+/**
+ * Component's style classes
+ *
+ * @param {Color} option Color option
+ * @returns {String} style classes
+ */
 
 const classes = (option: Color): string => {
   const isSelected = selected.value === option
