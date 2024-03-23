@@ -4,7 +4,7 @@
  */
 import { storeToRefs } from 'pinia'
 import { defineAsyncComponent, onBeforeMount } from 'vue'
-import { useWidgetStore } from '@/stores/widget'
+import { useWidgetStore } from '../stores/widget'
 
 import type Widget from '@/types/Widget'
 import type UpdateEvent from '@/types/UpdateEvent'
@@ -22,20 +22,23 @@ const { widgets } = storeToRefs(widgetStore)
  * @param {object} widget Updated widget
  */
 const handleUpdate = (event: UpdateEvent, widget: Widget): void => {
-  const modifiedWidget = widgets.value.find((w) => {
+  const modifiedWidget: Widget | undefined = widgets?.value?.find((w) => {
     return JSON.stringify(w) === JSON.stringify(widget)
   })
 
   // disable other widgets
   if (event.property === 'active') {
-    widgets.value.forEach((widget) => {
+    widgets.value?.forEach((widget) => {
       if (JSON.stringify(modifiedWidget) !== JSON.stringify(widget)) {
         widget.active = false
       }
     })
   }
 
-  modifiedWidget[event.property] = event.value
+  if (modifiedWidget) {
+    // @ts-expect-error
+    modifiedWidget[event.property] = event.value
+}
 }
 
 onBeforeMount(() => {

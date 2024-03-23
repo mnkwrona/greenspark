@@ -1,3 +1,1 @@
-type Color = 'white' | 'black' | 'blue' | 'green' | 'beige' | null
-
-export default Color
+export type Color = 'white' | 'black' | 'blue' | 'green' | 'beige' | null | undefined

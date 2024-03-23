@@ -3,7 +3,7 @@
  * Greenspark logo component
  */
 import { computed } from 'vue'
-import type Color from '@/types/Color'
+import type { Color } from '@/types/Color'
 
 const props = defineProps<{
   /**

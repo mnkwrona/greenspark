@@ -1,12 +1,13 @@
+import {ref} from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3';
 import type Widget from '@/types/Widget';
 import GSProductWidget from '../components/GSProductWidget.vue';
 
-const widgetSample = {
+const widgetSample: Widget = {
   id: 1,
-  action: 'action',
+  action: 'collects',
   amount: 100,
-  type: 'type',
+  type: 'plastic bottles',
   linked: true,
   selectedColor: 'blue',
   active: true

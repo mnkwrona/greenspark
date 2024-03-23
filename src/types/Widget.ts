@@ -1,6 +1,6 @@
-import Action from './Action'
-import Color from './Color'
-import ImpactType from './ImpactType'
+import type {Action} from './Action'
+import type { Color } from './Color'
+import type { ImpactType } from './ImpactType'
 
 export default interface Widget {
   id: number

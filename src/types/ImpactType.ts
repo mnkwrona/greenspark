@@ -1,3 +1,1 @@
-type ImpactType = 'carbon' | 'plastic bottles' | 'trees'
-
-export default ImpactType
+export type ImpactType = 'carbon' | 'plastic bottles' | 'trees'

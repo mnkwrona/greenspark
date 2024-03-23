@@ -2,7 +2,7 @@
 /**
  * Color selector control component
  */
-import type Color from '@/types/Color'
+import type { Color } from '../types/Color'
 import { computed } from 'vue'
 
 const props = defineProps<{

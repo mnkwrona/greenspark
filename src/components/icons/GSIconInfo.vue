@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type Color from '@/types/Color'
+import type { Color } from '@/types/Color'
 
 const props = defineProps<{
   color: Color

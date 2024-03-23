@@ -4,7 +4,7 @@
  */
 import { computed, defineAsyncComponent } from 'vue'
 
-import type Color from '@/types/Color'
+import type { Color } from '@/types/Color'
 import type UpdateEvent from '@/types/UpdateEvent'
 import type Widget from '@/types/Widget'
 
@@ -37,21 +37,24 @@ const emit = defineEmits<{
  * selected color of widget
  */
 const logoColor = computed(() => {
-  return ['beige', 'white'].includes(props.widget.selectedColor) ? 'green' : 'beige'
+  if (props.widget?.selectedColor) {
+    return ['beige', 'white'].includes(props.widget.selectedColor) ? 'green' : 'beige'
+
+  }
 })
 
 /**
  * Subheader copy
  */
 const subheader = computed(() => {
-  return `this product ${props.widget.action}`
+  return `this product ${props.widget?.action}`
 })
 
 /**
  * Header copy
  */
 const header = computed(() => {
-  return `${props.widget.amount}${props.widget.type === 'carbon' ? 'kgs of' : ''} ${props.widget.type}`
+  return `${props.widget?.amount}${props.widget?.type === 'carbon' ? 'kgs of' : ''} ${props.widget?.type}`
 })
 
 /**
@@ -59,7 +62,7 @@ const header = computed(() => {
  * @param {Boolean | String} eventVal Changed property's value
  * @param { String} propName Changed property's name
  */
-const handleChange = (eventVal: boolean | string, propName: string) => {
+const handleChange = (eventVal: boolean | string | Color , propName: string) => {
   emit('updated', { property: propName, value: eventVal })
 }
 
@@ -76,7 +79,7 @@ const headerClasses = computed(() => {
     beige: 'bg-[--color-header-bg-beige] text-[--color-header-font-dark]'
   }
 
-  return variants[props.widget.selectedColor as keyof typeof variants]
+  return variants[props.widget?.selectedColor as keyof typeof variants]
 })
 </script>
 
