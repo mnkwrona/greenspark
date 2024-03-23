@@ -1,18 +1,16 @@
-import { defineComponent } from 'vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
 import GSTooltip from '../components/GSTooltip.vue'
 
-export default {
+const meta = {
   title: 'Components/GSTooltip',
   component: GSTooltip,
-}
-
-const Template = (args) => defineComponent({
-  components: { GSTooltip },
-  setup() {
-    return { args }
-  },
-  template: `
-    <div style="position: relative; margin-left: 200px; top: 200px;">
+  render: (args: any) => ({
+    components: { GSTooltip },
+    setup() {
+      return { args };
+    },
+    template: `
+    <div style="position: relative; margin-left: 200px; top: 50px;">
       <GSTooltip v-bind="args">
         <template #trigger>
           <button style="border-radius: 4px; color: white; background-color: #3b755f; padding: 4px 8px">
@@ -25,7 +23,13 @@ const Template = (args) => defineComponent({
       </GSTooltip>
     </div>
   `,
-})
+  }),
+  tags: ['autodocs'],
+} satisfies Meta<typeof GSTooltip>
 
-export const Default = Template.bind({})
-Default.args = {}
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {}
+}

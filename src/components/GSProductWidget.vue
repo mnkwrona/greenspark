@@ -16,7 +16,7 @@ const GSWidgetProp = defineAsyncComponent(() => import('./GSWidgetProp.vue'))
 const colors: Color[] = ['blue', 'green', 'beige', 'white', 'black']
 
 const props = defineProps<{
-  widget: Widget
+  widget: Widget | null
 }>()
 
 const emit = defineEmits<{

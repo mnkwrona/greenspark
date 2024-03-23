@@ -1,28 +1,37 @@
-import { defineComponent } from 'vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
 import GSLogo from '../components/GSLogo.vue';
 
-export default {
+const meta = {
   title: 'Components/GSLogo',
   component: GSLogo,
+
+  render: (args: any) => ({
+    components: { GSLogo },
+    setup() {
+      return { args };
+    },
+    template: '<GSLogo :color="args.color" />',
+  }),
   tags: ['autodocs'],
-};
-
-
-const Template = (args) => defineComponent({
-  components: { GSLogo },
-  setup() {
-    return { args };
+  argTypes: {
+    color: { control: 'select', options: ['beige', 'green', 'blue', 'black'] },
   },
-  template: '<GSLogo v-bind="args" />',
-});
+  args: {
+    color: 'blue',
+  }
+} satisfies Meta<typeof GSLogo>
 
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  color: '',
-};
+export const Default: Story = {
+  args: {
+    color: null,
+  }
+}
 
-export const Green = Template.bind({});
-Green.args = {
-  color: 'green',
-};
+export const Green: Story = {
+  args: {
+    color: 'green',
+  }
+}

@@ -1,26 +1,36 @@
-import { defineComponent } from 'vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
 import GSCheckbox from '../components/GSCheckbox.vue';
 
-export default {
+const meta = {
   title: 'Components/GSCheckbox',
   component: GSCheckbox,
+  render: (args: any) => ({
+    components: { GSCheckbox },
+    setup() {
+      return { args };
+    },
+    template: '<div style="display: flex"><GSCheckbox :modelValue="args.modelValue" /></div>',
+  }),
   tags: ['autodocs'],
-};
-
-const Template = (args) => defineComponent({
-  components: { GSCheckbox },
-  setup() {
-    return { args };
+  argTypes: {
+    modelValue: { control: 'boolean'},
   },
-  template: '<div style="display: flex"><GSCheckbox v-bind="args" /></div>',
-});
+  args: {
+    modelValue: true,
+  }
+} satisfies Meta<typeof GSCheckbox>
 
-export const Checked = Template.bind({});
-Checked.args = {
-  modelValue: true,
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Unchecked = Template.bind({});
-Unchecked.args = {
-  modelValue: false,
-};
+export const Default: Story = {
+  args: {
+    modelValue: false,
+  }
+}
+
+export const Checked: Story = {
+  args: {
+    modelValue: true,
+  }
+}

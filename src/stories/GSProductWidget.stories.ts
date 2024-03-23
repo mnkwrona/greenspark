@@ -1,33 +1,48 @@
-import { defineComponent } from 'vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
+import type Widget from '@/types/Widget';
 import GSProductWidget from '../components/GSProductWidget.vue';
 
-export default {
-  title: 'Components/GSProductWidget',
-  component: GSProductWidget,
-  tags: ['autodocs'],
-};
-
-const Template = (args) => defineComponent({
-  components: { GSProductWidget },
-  setup() {
-    return { args }
-  },
-  template: '<GSProductWidget v-bind="args" style="max-width: 220px; padding-top: 100px;" />',
-})
-
-export const Default = Template.bind({})
-Default.args = {
-  widget: {
-    action: 'action',
-    amount: 100,
-    type: 'type',
-    linked: true,
-    selectedColor: 'blue',
-    active: true,
-  },
+const widgetSample = {
+  id: 1,
+  action: 'action',
+  amount: 100,
+  type: 'type',
+  linked: true,
+  selectedColor: 'blue',
+  active: true
 }
 
-export const Loading = Template.bind({})
-Loading.args = {
-  widget: null,
+const meta = {
+  title: 'Components/GSProductWidget',
+  component: GSProductWidget,
+
+  render: (args: any) => ({
+    components: { GSProductWidget },
+    setup() {
+      return { args };
+    },
+    template: '<GSProductWidget :widget=args.widget style="max-width: 220px;" />',
+  }),
+  tags: ['autodocs'],
+  argTypes: {
+    widget: { control: 'select', options: [widgetSample, null]},
+  },
+  args: {
+    widget: widgetSample,
+  }
+} satisfies Meta<typeof GSProductWidget>
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    widget: widgetSample,
+  }
+}
+
+export const Loading: Story = {
+  args: {
+    widget: null,
+  }
 }

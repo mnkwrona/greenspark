@@ -1,30 +1,34 @@
-import { defineComponent } from 'vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
 import GSWidgetProp from '../components/GSWidgetProp.vue'
 import GSToggle from '../components/GSToggle.vue'
 
-export default {
+const meta = {
   title: 'Components/GSWidgetProp',
   component: GSWidgetProp,
-}
-
-const Template = (args) => defineComponent({
-  components: { GSWidgetProp, GSToggle },
-  setup() {
-    return { args }
-  },
-  template: `
+  render: (args: any) => ({
+    components: { GSWidgetProp, GSToggle },
+    setup() {
+      return { args };
+    },
+    template: `
     <div style="max-width: 300px;">
-      <GSWidgetProp v-bind="args">
+      <GSWidgetProp >
         <template #label>
           <p style="color: var(--color-prop-label);">Property Label</p>
         </template>
         <template #control>
-          <GSToggle modelValue='false' />
+          <GSToggle :modelValue="true" />
         </template>
       </GSWidgetProp>
     </div>
   `,
-})
+  }),
+  tags: ['autodocs'],
+} satisfies Meta<typeof GSWidgetProp>
 
-export const Default = Template.bind({})
-Default.args = {}
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {}
+}

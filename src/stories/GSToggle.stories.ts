@@ -1,26 +1,36 @@
-import { defineComponent } from 'vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
 import GSToggle from '../components/GSToggle.vue'
 
-export default {
+const meta = {
   title: 'Components/GSToggle',
   component: GSToggle,
+  render: (args: any) => ({
+    components: { GSToggle },
+    setup() {
+      return { args };
+    },
+    template: '<div style="display: flex"><GSToggle :modelValue="args.modelValue" /></div>',
+  }),
   tags: ['autodocs'],
-}
-
-const Template = (args) => defineComponent({
-  components: { GSToggle },
-  setup() {
-    return { args }
+  argTypes: {
+    modelValue: { control: 'boolean'},
   },
-  template: '<GSToggle v-bind="args" />',
-})
+  args: {
+    modelValue: true,
+  }
+} satisfies Meta<typeof GSToggle>
 
-export const Default = Template.bind({})
-Default.args = {
-  modelValue: false,
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    modelValue: false,
+  }
 }
 
-export const Toggled = Template.bind({})
-Toggled.args = {
-  modelValue: true,
+export const Toggled: Story = {
+  args: {
+    modelValue: true,
+  }
 }
