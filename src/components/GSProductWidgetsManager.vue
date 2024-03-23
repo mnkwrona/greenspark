@@ -36,7 +36,7 @@ onBeforeMount(() => {
 
 <template>
   <div
-    class="gs-product-widgets-manager bg-[--gs-c-gray-light] drop-shadow-xl flex flex-col lg:flex-row gap-12 lg:gap-10 h-fit items-center lg:justify-between px-[12px] py-[24px] lg:p-[36px] rounded-[7px] w-full"
+    class="gs-product-widgets-manager bg-[--gs-c-gray-light] drop-shadow-xl flex flex-col mx-auto lg:flex-row gap-12 lg:gap-10 h-fit items-center lg:justify-between px-[12px] py-[24px] lg:p-[36px] rounded-[7px] sm:w-min-content lg:w-full"
   >
     <GSProductWidget
       v-for="(widget, index) in widgets"

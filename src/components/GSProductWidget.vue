@@ -9,6 +9,7 @@ const GSCheckbox = defineAsyncComponent(() => import('./GSCheckbox.vue'))
 const GSToggle = defineAsyncComponent(() => import('./GSToggle.vue'))
 const GSColorSelect = defineAsyncComponent(() => import('./GSColorSelect.vue'))
 const GSLogo = defineAsyncComponent(() => import('./GSLogo.vue'))
+const GSSkeleton = defineAsyncComponent(()=> import('./GSSkeleton.vue'))
 const GSTooltip = defineAsyncComponent(() => import('./GSTooltip.vue'))
 const GSWidgetProp = defineAsyncComponent(() => import('./GSWidgetProp.vue'))
 
@@ -52,67 +53,71 @@ const headerClasses = computed(() => {
 </script>
 
 <template>
-  <div class="gs-product-widget flex flex-col gap-[10px] h-[66px] w-full">
-    <div class="flex flex-row gap-[12px] p-[8px] rounded-[6px]" :class="headerClasses">
-      <div>
-        <GSLogo :color="logoColor" class="h-[45px]" />
+  <div class="gs-product-widget h-[66px] w-full">
+    <div v-if="widget" class="flex flex-col gap-[10px]">
+      <div class="flex flex-row gap-[12px] p-[8px] rounded-[6px]" :class="headerClasses">
+        <div>
+          <GSLogo :color="logoColor" class="h-[45px]" />
+        </div>
+        <div class="flex flex-col">
+          <p class="text-xs">{{ subheader }}</p>
+          <p class="font-bold text-lg">{{ header }}</p>
+        </div>
       </div>
-      <div class="flex flex-col">
-        <p class="text-xs">{{ subheader }}</p>
-        <p class="font-bold text-lg">{{ header }}</p>
+
+      <div class="flex flex-col gap-[10px]">
+        <GSWidgetProp>
+          <template #label>
+            <div class="flex flex-row gap-1">
+              Link to Public Profile
+              <GSTooltip>
+                <template #content>
+                  <p>
+                    This widget links directly to your public profile so that you can easily share
+                    your impact with your customers. Turn it off here if you do not want the badge to
+                    link to it.
+                  </p>
+                  <div class="mt-[8px]">
+                    <a href="/" class="text-[--color-tooltip-link] font-bold">
+                      View Public Profile
+                    </a>
+                  </div>
+                </template>
+              </GSTooltip>
+            </div>
+          </template>
+          <template #control>
+            <GSCheckbox
+              :modelValue="widget.linked"
+              class="h-[24px] w-[24px]"
+              @update:modelValue="handleChange($event, 'linked')"
+            />
+          </template>
+        </GSWidgetProp>
+
+        <GSWidgetProp>
+          <template #label>Badge colour</template>
+          <template #control>
+            <GSColorSelect
+              :options="colors"
+              :modelValue="widget.selectedColor"
+              @update:modelValue="handleChange($event, 'selectedColor')"
+            />
+          </template>
+        </GSWidgetProp>
+
+        <GSWidgetProp>
+          <template #label>Activate badge</template>
+          <template #control>
+            <GSToggle
+              :modelValue="widget.active"
+              @update:modelValue="handleChange($event, 'active')"
+            />
+          </template>
+        </GSWidgetProp>
       </div>
     </div>
 
-    <div class="flex flex-col gap-[10px]">
-      <GSWidgetProp>
-        <template #label>
-          <div class="flex flex-row gap-1">
-            Link to Public Profile
-            <GSTooltip>
-              <template #content>
-                <p>
-                  This widget links directly to your public profile so that you can easily share
-                  your impact with your customers. Turn it off here if you do not want the badge to
-                  link to it.
-                </p>
-                <div class="mt-[8px]">
-                  <a href="/" class="text-[--color-tooltip-link] font-bold">
-                    View Public Profile
-                  </a>
-                </div>
-              </template>
-            </GSTooltip>
-          </div>
-        </template>
-        <template #control>
-          <GSCheckbox
-            :modelValue="widget.linked"
-            class="h-[24px] w-[24px]"
-            @update:modelValue="handleChange($event, 'linked')"
-          />
-        </template>
-      </GSWidgetProp>
-
-      <GSWidgetProp>
-        <template #label>Badge colour</template>
-        <template #control>
-          <GSColorSelect
-            :options="colors"
-            :modelValue="widget.selectedColor"
-            @update:modelValue="handleChange($event, 'selectedColor')"
-          />
-        </template>
-      </GSWidgetProp>
-
-      <GSWidgetProp>
-        <template #label>Activate badge</template>
-        <template #control>
-          <GSToggle
-            :modelValue="widget.active"
-            @update:modelValue="handleChange($event, 'active')"
-          />
-        </template>
-      </GSWidgetProp>
-    </div>
-  </div>
+    <GSSkeleton v-else class="min-h-[163px]" />
+ </div>
 </template>

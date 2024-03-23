@@ -7,7 +7,7 @@ const props = defineProps<{
 }>()
 
 const fill = computed(() => {
-  return `var(--gs-c-${props.color})`
+  return `var(--gs-c-${props.color || 'black'})`
 })
 </script>
 
