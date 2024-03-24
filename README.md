@@ -17,6 +17,7 @@ VITE_API_URL=https://api.mocki.io/v2/016d11e8/product-widgets
 ```
 I provided an `.env.example` file, so you can just use this file renamed.
 
+Run:
 ```sh
 yarn
 yarn dev
