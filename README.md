@@ -5,7 +5,7 @@ The app fetches the initial state from API on the `onBeforeMount` hook in the ma
 
 When the user changes a widget's setting, each input-like component emits an event with the name of the changed property and its new value, which is next handled by `GSProductWidget.vue`, which then sends this event data and widget details up to `GSProductWidgetsManager.vue`. The last component updates the widget with new value in the store. This approach ensures that there is a single source of truth for the application state. I didn't persist the state in the browser, as there was no requirement defined for this, so with each page reload all the changes will be gone.
 
-The application is styled with *Tailwind CSS* to speed up the custom styling of the components. I created a set of semantic color variables in the `base.css` file, so i.e. applying different color themes in the future would be easy. Some components, like 'GSToggle.vue', 'GSCheckbox.vue', and 'GSTooltip.vue' have transition effects for a nicer visual effect. I achieved it using the Vue.js Transition feature and effects provided by Tailwind CSS.
+The application is styled with Tailwind CSS to speed up the custom styling of the components. I created a set of semantic color variables in the `base.css` file, so i.e. applying different color themes in the future would be easy. Some components, like 'GSToggle.vue', 'GSCheckbox.vue', and 'GSTooltip.vue' have transition effects for a nicer visual effect. I achieved it using the Vue.js Transition feature and effects provided by Tailwind CSS.
 
 All the components can be tested in the implemented Storybook.
 
