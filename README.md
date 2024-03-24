@@ -11,23 +11,18 @@ All the components can be tested in the implemented Storybook.
 
 
 ## Run the app locally
-1. Add `.env` file with mock API endpoint:
+Add `.env` file with mock API endpoint:
 ```sh
 VITE_API_URL=https://api.mocki.io/v2/016d11e8/product-widgets
 ```
 I provided an `.env.example` file, so you can just use this file renamed.
 
-2. Install dependencies:
 ```sh
 yarn
-```
-3. Run the app locally:
-```sh
 yarn dev
 ```
 
 ## Run Storybook
-Run the command:
 ```sh
 yarn storybook
 ```
