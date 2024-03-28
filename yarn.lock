@@ -7794,7 +7794,7 @@ vite@^5.0.0, vite@^5.1.6:
 
 vitest@^1.4.0:
   version "1.4.0"
-  resolved "https://registry.npmjs.org/vitest/-/vitest-1.4.0.tgz"
+  resolved "https://registry.yarnpkg.com/vitest/-/vitest-1.4.0.tgz#f5c812aaf5023818b89b7fc667fa45327396fece"
   integrity sha512-gujzn0g7fmwf83/WzrDTnncZt2UiXP41mHuFYFrdwaLRVQ6JYQEiME2IfEjU3vcFL3VKa75XhI3lFgn+hfVsQw==
   dependencies:
     "@vitest/expect" "1.4.0"
