@@ -65,10 +65,12 @@ const innerRingClasses = computed(() => {
 
 <style scoped lang="scss">
 .gs-toggle {
-  button {
-    &:hover {
-      .ring-outer {
-        background-color: var(--color-toggle-hover-ring);
+  @screen sm {
+    button {
+      &:hover {
+        .ring-outer {
+          background-color: var(--color-toggle-hover-ring);
+        }
       }
     }
   }

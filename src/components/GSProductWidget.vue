@@ -10,8 +10,8 @@ import type Widget from '@/types/Widget'
 
 const GSCheckbox = defineAsyncComponent(() => import('./GSCheckbox.vue'))
 const GSColorSelect = defineAsyncComponent(() => import('./GSColorSelect.vue'))
-const GSLogo = defineAsyncComponent(() => import('./GSLogo.vue'))
-const GSSkeleton = defineAsyncComponent(()=> import('./GSSkeleton.vue'))
+const GSLogo = defineAsyncComponent(() => import('./icons/GSLogo.vue'))
+const GSSkeleton = defineAsyncComponent(() => import('./GSSkeleton.vue'))
 const GSToggle = defineAsyncComponent(() => import('./GSToggle.vue'))
 const GSTooltip = defineAsyncComponent(() => import('./GSTooltip.vue'))
 const GSWidgetProp = defineAsyncComponent(() => import('./GSWidgetProp.vue'))
@@ -19,16 +19,16 @@ const GSWidgetProp = defineAsyncComponent(() => import('./GSWidgetProp.vue'))
 const colors: Color[] = ['blue', 'green', 'beige', 'white', 'black']
 
 const props = defineProps<{
- /**
-  * Widget details
-  */
+  /**
+   * Widget details
+   */
   widget: Widget | null
 }>()
 
 const emit = defineEmits<{
- /**
-  * Update event
-  */
+  /**
+   * Update event
+   */
   (e: 'updated', propertyObj: UpdateEvent): void
 }>()
 
@@ -38,8 +38,7 @@ const emit = defineEmits<{
  */
 const logoColor = computed(() => {
   if (props.widget?.selectedColor) {
-    return ['beige', 'white'].includes(props.widget.selectedColor) ? 'green' : 'beige'
-
+    return ['beige', 'white'].includes(props.widget.selectedColor) ? 'green' : 'white'
   }
 })
 
@@ -62,7 +61,7 @@ const header = computed(() => {
  * @param {Boolean | String} eventVal Changed property's value
  * @param { String} propName Changed property's name
  */
-const handleChange = (eventVal: boolean | string | Color , propName: string) => {
+const handleChange = (eventVal: boolean | string | Color, propName: string) => {
   emit('updated', { property: propName, value: eventVal })
 }
 
@@ -105,8 +104,8 @@ const headerClasses = computed(() => {
                 <template #content>
                   <p>
                     This widget links directly to your public profile so that you can easily share
-                    your impact with your customers. Turn it off here if you do not want the badge to
-                    link to it.
+                    your impact with your customers. Turn it off here if you do not want the badge
+                    to link to it.
                   </p>
                   <div class="mt-[8px]">
                     <a href="/" class="text-[--color-tooltip-link] font-bold">
@@ -130,6 +129,7 @@ const headerClasses = computed(() => {
           <template #label>Badge colour</template>
           <template #control>
             <GSColorSelect
+              :disabled="!widget.active"
               :options="colors"
               :modelValue="widget.selectedColor"
               @update:modelValue="handleChange($event, 'selectedColor')"
@@ -150,5 +150,5 @@ const headerClasses = computed(() => {
     </div>
 
     <GSSkeleton v-else class="min-h-[163px]" />
- </div>
+  </div>
 </template>

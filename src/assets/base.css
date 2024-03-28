@@ -50,7 +50,7 @@
   --color-header-bg-green: var(--gs-c-green);
   --color-header-bg-white: var(--gs-c-white);
 
-  --color-header-font: var(--gs-c-beige);
+  --color-header-font: var(--gs-c-white);
   --color-header-font-dark: var(--gs-c-green);
 
   --color-prop-label: var(--gs-c-green);
