@@ -27,7 +27,7 @@ const handleUpdate = (event: UpdateEvent, widget: Widget): void => {
   })
 
   // disable other widgets
-  if (event.property === 'active') {
+  if (event.property === 'active' && event.value) {
     widgets.value?.forEach((widget) => {
       if (JSON.stringify(modifiedWidget) !== JSON.stringify(widget)) {
         widget.active = false
@@ -38,7 +38,7 @@ const handleUpdate = (event: UpdateEvent, widget: Widget): void => {
   if (modifiedWidget) {
     // @ts-expect-error
     modifiedWidget[event.property] = event.value
-}
+  }
 }
 
 onBeforeMount(() => {
@@ -48,7 +48,7 @@ onBeforeMount(() => {
 
 <template>
   <div
-    class="gs-product-widgets-manager bg-[--gs-c-gray-light] drop-shadow-xl flex flex-col mx-auto lg:flex-row gap-12 lg:gap-10 h-fit items-center lg:justify-between px-[12px] py-[24px] lg:p-[36px] rounded-[7px] sm:w-min-content lg:w-full"
+    class="gs-product-widgets-manager bg-[--gs-c-gray-light] drop-shadow-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto lg:flex-row gap-12 lg:gap-10 wrap items-center lg:justify-between px-[12px] py-[24px] lg:p-[36px] rounded-[7px] sm:w-min-content lg:w-full"
   >
     <GSProductWidget
       v-for="(widget, index) in widgets"

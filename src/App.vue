@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
 
-const GSProductWidgetsManager = defineAsyncComponent(() => import('./components/GSProductWidgetsManager.vue'))
+const GSProductWidgetsManager = defineAsyncComponent(
+  () => import('./components/GSProductWidgetsManager.vue')
+)
 </script>
 
 <template>
