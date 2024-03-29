@@ -36,7 +36,7 @@ const show = ref(false)
       @mouseover="show = true"
       @mouseleave="show = false"
     >
-      <div class="py-[24px] px-[16px] text-[--color-tooltip-text]">
+      <div class="tooltip py-[24px] px-[16px] text-[--color-tooltip-text]">
         <slot name="content"></slot>
       </div>
     </transition>

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import GSColorSelect from '../GSColorSelect.vue'
 
 import type { Color } from '../../types/Color'
@@ -9,8 +9,19 @@ describe('GSColorSelect.vue', () => {
   const modelValue = 'blue'
   const disabled = false
 
+  it('renders correctly', () => {
+    const wrapper = mount(GSColorSelect, {
+      slots: {
+        label: 'Test Label',
+        control: '<input type="text" />'
+      }
+    })
+
+    expect(wrapper.exists()).toBe(true)
+  })
+
   it('renders color options correctly', () => {
-    const wrapper = shallowMount(GSColorSelect, {
+    const wrapper = mount(GSColorSelect, {
       props: {
         modelValue,
         options,
@@ -28,7 +39,7 @@ describe('GSColorSelect.vue', () => {
   })
 
   it('selects color option on click if not disabled', async () => {
-    const wrapper = shallowMount(GSColorSelect, {
+    const wrapper = mount(GSColorSelect, {
       props: {
         modelValue,
         options,
@@ -43,7 +54,7 @@ describe('GSColorSelect.vue', () => {
   })
 
   it('does not select color option on click if disabled', async () => {
-    const wrapper = shallowMount(GSColorSelect, {
+    const wrapper = mount(GSColorSelect, {
       props: {
         modelValue,
         options,
@@ -58,7 +69,7 @@ describe('GSColorSelect.vue', () => {
   })
 
   it('disables color options if disabled prop is true', () => {
-    const wrapper = shallowMount(GSColorSelect, {
+    const wrapper = mount(GSColorSelect, {
       props: {
         modelValue,
         options,
